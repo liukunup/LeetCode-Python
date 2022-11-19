@@ -1,5 +1,7 @@
 # LeetCode-Python 刷题笔记
 
+快速访问[LeetCode.cn](https://leetcode.cn/)✈️
+
 建议安装`Jupyter Notebook`作为刷题工具，在没有代码提示的情况下，更好的提升自身水平。
 
 ## 安装开发环境
