@@ -82,6 +82,25 @@ class Solution:
 
         return s[begin:begin + max_len]
 
+    def expandAroundCenter(self, s, left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return left + 1, right - 1
+
+    def longestPalindrome_v2(self, s: str) -> str:
+        start, end = 0, 0
+        for i in range(len(s)):
+            # 长度=1
+            left1, right1 = self.expandAroundCenter(s, i, i)
+            if right1 - left1 > end - start:
+                start, end = left1, right1
+            # 长度=2
+            left2, right2 = self.expandAroundCenter(s, i, i + 1)
+            if right2 - left2 > end - start:
+                start, end = left2, right2
+        return s[start: end + 1]
+
 
 # 请完成以下测试代码
 class SolutionTest(unittest.TestCase):
@@ -95,10 +114,10 @@ class SolutionTest(unittest.TestCase):
 
     # 请设计一些测试用例来验证
     def test_1(self):
-        self.assertEqual(self.inst.longestPalindrome("babad"), "bab")
+        self.assertEqual(self.inst.longestPalindrome_v2("babad"), "bab")
 
     def test_2(self):
-        self.assertEqual(self.inst.longestPalindrome("cbbd"), "bb")
+        self.assertEqual(self.inst.longestPalindrome_v2("cbbd"), "bb")
 
 
 if __name__ == "__main__":
