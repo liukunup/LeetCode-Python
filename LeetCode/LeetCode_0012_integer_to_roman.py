@@ -103,6 +103,11 @@ class Solution:
         (1, "I")
     ]
 
+    THOUSANDS = ["", "M", "MM", "MMM"]
+    HUNDREDS = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+    TENS = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    ONES = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+
     def intToRoman(self, num: int) -> str:
         roman = list()
         for value, symbol in self.VALUE_SYMBOLS:
@@ -112,6 +117,12 @@ class Solution:
             if num == 0:
                 break
         return "".join(roman)
+
+    def intToRoman_v2(self, num: int) -> str:
+        return Solution.THOUSANDS[num // 1000] + \
+               Solution.HUNDREDS[num % 1000 // 100] + \
+               Solution.TENS[num % 100 // 10] + \
+               Solution.ONES[num % 10]
 
 
 # 请完成以下测试代码
@@ -126,16 +137,16 @@ class SolutionTest(unittest.TestCase):
 
     # 请设计一些测试用例来验证
     def test_1(self):
-        self.assertEqual(self.inst.intToRoman(3), "III")
+        self.assertEqual(self.inst.intToRoman_v2(3), "III")
 
     def test_2(self):
-        self.assertEqual(self.inst.intToRoman(4), "IV")
+        self.assertEqual(self.inst.intToRoman_v2(4), "IV")
 
     def test_3(self):
-        self.assertEqual(self.inst.intToRoman(58), "LVIII")
+        self.assertEqual(self.inst.intToRoman_v2(58), "LVIII")
 
     def test_4(self):
-        self.assertEqual(self.inst.intToRoman(1994), "MCMXCIV")
+        self.assertEqual(self.inst.intToRoman_v2(1994), "MCMXCIV")
 
 
 if __name__ == "__main__":
