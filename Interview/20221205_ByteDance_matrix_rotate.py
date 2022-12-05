@@ -46,6 +46,32 @@ class Solution:
 
         return matrix
 
+    @staticmethod
+    def rotate_v2(matrix: List[List]) -> List[List]:
+
+        n = len(matrix)
+
+        for i in range(n // 2):
+            for j in range(i, n - 1 - i):
+                matrix[i][j], matrix[j][n - 1 - i], matrix[n - 1 - i][n - 1 - j], matrix[n - 1 - j][i] = \
+                    matrix[n - 1 - j][i], matrix[i][j], matrix[j][n - 1 - i], matrix[n - 1 - i][n - 1 - j]
+
+        return matrix
+
+
+    @staticmethod
+    def rotate_v3(matrix: List[List]) -> List[List]:
+
+        n = len(matrix)
+
+        matrix_new = [[0] * n for _ in range(n)]
+
+        for i in range(n):
+            for j in range(n):
+                matrix_new[j][n-1-i] = matrix[i][j]
+
+        return matrix_new
+
 
 class SolutionTest(unittest.TestCase):
 
@@ -66,7 +92,7 @@ class SolutionTest(unittest.TestCase):
                   [13, 9, 5, 1],
                   [14, 10, 6, 2],
                   [15, 11, 7, 3]]
-        res = self.inst.rotate(matrix=matrix)
+        res = self.inst.rotate_v3(matrix=matrix)
         print(res)
         self.assertEqual(res, target)
 
