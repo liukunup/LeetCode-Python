@@ -5,6 +5,7 @@
 
 # 导入所需的依赖库
 import unittest
+from typing import Optional, List
 
 # 题目编号: %s
 # 题目名称: %s

@@ -88,7 +88,7 @@ class LeetCodeCrawler:
             question = question_obj["data"]["question"]
             question_id = question["questionId"]  # 题目编号
             title_slug = question["titleSlug"]  # 题目名称
-            with open(f"LeetCode/LeetCode_{question_id.zfill(4)}_{title_slug.replace('-', '_')}.py", "w", encoding="UTF-8") as f:
+            with open(f"LeetCode/LeetCode_{question_id.zfill(4)}_{title_slug.replace('-', '_')}_test.py", "w", encoding="UTF-8") as f:
                 # 配置模板里所需的参数
                 args = list()
                 # 作者+时间戳
