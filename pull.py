@@ -39,7 +39,7 @@ class LeetCodeCrawler:
         """
         try:
             # 通过正则表达式提取题目名
-            param = re.search(r"^https://leetcode.cn/problems/(?P<question>[A-Za-z0-9\-]+)/$", question_url)
+            param = re.search(r"^https://leetcode.cn/problems/(?P<question>[A-Za-z0-9\-]+)/", question_url)
             question = param.group("question")
             # 读取题目查询GraphQL语句
             graphql = None
